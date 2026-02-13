@@ -1,0 +1,7 @@
+langchain-community
+duckduckgo-search
+langchain-openai
+langgraph
+streamlit
+pandas
+scikit-learn
