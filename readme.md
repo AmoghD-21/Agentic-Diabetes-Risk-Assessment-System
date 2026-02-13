@@ -23,12 +23,7 @@ Predictor Node (ML): Once the user confirms, the agent feeds the data into the .
 
 Researcher Node (Tools): The agent identifies the risk level and searches the web for tailored recommendations.
 
-💡 Pro-Tip for your GitHub Repo:
-Add a GIF: Record a short 30-second video of you saying "Hii," entering data, hitting the "Confirm" button, and seeing the Gauge appear. Use a tool like GIPHY Capture to turn it into a GIF and put it at the very top of your README.
 
-Folder Structure: Make sure your repo looks clean:
-
-Plaintext
 ├── app.py             # Streamlit Entry Point
 ├── src/
 │   ├── agent.py       # LangGraph Definition
