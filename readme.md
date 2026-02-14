@@ -1,36 +1,52 @@
 # 🩺 Agentic Diabetes Risk Assessment System
-This project is a sophisticated Medical AI Agent designed to transition from simple chatbots to autonomous, safe, and stateful AI systems. It leverages a Multi-Node Directed Acyclic Graph (DAG) to guide users through health data collection, provide a machine-learning-based risk score, and perform real-time web research for personalized lifestyle advice.
 
-🚀 Key Technical Features
-Stateful Orchestration: Managed by LangGraph, allowing the agent to "remember" user metrics (Age, Glucose, BMI) across multiple chat turns.
-
-Clinical Brain: Integrates a custom-trained Scikit-Learn model to calculate risk probability with high precision.
-
-Human-in-the-Loop (HITL): Implements Breakpoints and Checkpointers to pause the graph for user data verification before triggering analysis—ensuring clinical safety.
-
-Dynamic Research Node: Uses DuckDuckGo Search API to fetch real-time, personalized vegetarian dietary tips based on the user's specific risk profile.
-
-Professional UI: A Streamlit dashboard featuring Streaming Responses and interactive Plotly Risk Gauges.
-
-3. The "How It Works" Section (Architectural Explanation)
-This is great for showing recruiters how you think about system design:
-
-Triage Node (LLM): Uses GPT-4o and Pydantic to extract structured health metrics from natural language.
-
-Router (Logic): Evaluates if the collected data is complete. If so, it triggers the HITL Breakpoint.
-
-Predictor Node (ML): Once the user confirms, the agent feeds the data into the .pkl model.
-
-Researcher Node (Tools): The agent identifies the risk level and searches the web for tailored recommendations.
+An end-to-end **Agentic AI** application that transitions from simple health-chat to a production-ready clinical assessment tool. Built with **LangGraph** for stateful orchestration, **Scikit-Learn** for machine learning, and **Streamlit** for a professional dashboard.
 
 
-├── app.py             # Streamlit Entry Point
+
+## 🚀 Key Technical Features
+
+### 1. Multi-Node Agentic Architecture
+Unlike linear chatbots, this system uses a **Directed Acyclic Graph (DAG)** to manage conversation flow.
+* **Triage Node:** Employs LLM-based structured extraction to capture health metrics (Age, Glucose, BMI) from natural dialogue.
+* **Guardrail Node:** A clinical safety layer that validates inputs against realistic medical ranges to prevent model hallucinations.
+* **Researcher Node:** Uses **DuckDuckGo Search API** to fetch real-time, personalized lifestyle advice based on the user's risk profile.
+
+### 2. Human-in-the-Loop (HITL) 
+Implemented **LangGraph Checkpointers** to pause execution. The agent verifies extracted data with the user before triggering the ML prediction node, ensuring 100% data integrity.
+
+
+
+### 3. Machine Learning Integration
+Integrates a **Random Forest Classifier** trained on clinical data to provide real-time risk probabilities, visualized through interactive **Plotly** gauges.
+
+### 4. Professional PDF Reporting
+A modular reporting system built with **FPDF2** that sanitizes Unicode/emojis and generates a downloadable medical summary for the user.
+
+
+
+---
+
+## 🛠️ Tech Stack
+
+* **Orchestration:** LangGraph
+* **LLM:** OpenAI GPT-4o
+* **ML Model:** Scikit-Learn (Random Forest)
+* **UI/UX:** Streamlit & Plotly
+* **Tools:** DuckDuckGo Search API, FPDF2
+* **State Management:** LangGraph MemorySaver
+
+---
+
+## 📂 Project Structure
+
+```text
+├── app.py              # Streamlit Frontend & HITL UI
 ├── src/
-│   ├── agent.py       # LangGraph Definition
-│   ├── nodes.py       # Logic for each node
-│   ├── tools.py       # ML Model & Search Tools
-│   └── state.py       # Pydantic State Schema
-├── data/
-│   └── model.pkl      # Trained ML Model
-├── .env               # API Keys (Ignore in Git!)
-└── requirements.txt   # Dependencies
+│   ├── agent.py        # LangGraph Workflow Definition
+│   ├── nodes.py        # Conversational & Safety Logic
+│   ├── tools.py        # ML Prediction & Search Tools
+│   ├── reports.py      # PDF Generation & Sanitization
+│   └── state.py        # Pydantic State Schema
+├── requirements.txt    # Project Dependencies
+└── .env                # API Keys (Github Token / OpenAI)
