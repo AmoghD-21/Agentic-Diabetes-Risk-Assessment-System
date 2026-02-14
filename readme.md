@@ -22,6 +22,9 @@ Implemented **LangGraph Checkpointers** to pause execution. The agent verifies e
 ![Agent Workflow](assets/risk_meter.png.png)
 
 
+
+
+
 ### 3. Machine Learning Integration
 Integrates a **Random Forest Classifier** trained on clinical data to provide real-time risk probabilities, visualized through interactive **Plotly** gauges.
 
@@ -58,3 +61,20 @@ A modular reporting system built with **FPDF2** that sanitizes Unicode/emojis an
 │   └── state.py        # Pydantic State Schema
 ├── requirements.txt    # Project Dependencies
 └── .env                # API Keys (Github Token / OpenAI)
+
+
+
+
+⚙️ Installation & Setup
+# Clone the repository:
+
+
+git clone [https://github.com/your-username/diabetes-ai-agent.git](https://github.com/your-username/diabetes-ai-agent.git)
+cd diabetes-ai-agent
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+# Run the application:
+streamlit run app.py
